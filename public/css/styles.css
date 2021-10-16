@@ -18,7 +18,29 @@ h2 {
     font-family: 'Courier New', Courier, monospace;
     font-size: 18px;
     font-weight: 600;
-    color: #AAA;
+    color: #CCC;
     margin-left: 15rem;
     margin-right: 15rem;
+}
+
+#part1-array {
+    color: #000;
+}
+
+#part2-array {
+    color: #777;
+}
+
+#part3-array {
+    color: #CCC;
+}
+
+#testdiv {
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 300px;
+    background: greenyellow;
+    text-align: center;
+    font-size: 2rem;
 }
