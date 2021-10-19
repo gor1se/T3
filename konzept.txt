@@ -1,2 +1,24 @@
 Diese Seite soll ein Portal werden auf dem man seine Tippskills verbessern kann.
 Es geht nicht darum von grund auf das Tippen zu lernen sondern viel mehr darum interesante und abwechslungsreiche übungen zu bieten.
+
+So sollen die Texte überprüft werden:
+Es gibt drei verschiedene Datenstrings...
+1. Der gefragte Text, welcher auch zu beginn angezeigt wird.
+2. Der nächste gefragte Buchstabe. Wird etwas anders eingefärbt
+3. Der bereits verfasste Text, wird in schwarz angezeigt.
+
+So soll das ganze ablaufen:
+1. Vollständigen Text anzeigen
+2. Ersten Buchstaben in den mittleren String hinzufügen
+3. Einen eingabebuchstaben einnehmen
+4. Den eingabebuchstaben mit dem mittleren String vergleichen
+5. vergleichen
+5.1 Falls richtig:
+    - 1. String wird um den mittleren String ergänzt
+    - 2. String wird gegen den ersten buchstaben des letzten Strings ausgetauscht
+    - 3. String erster Buchstabe wird entfernt
+5.2 Falls falsch:
+    - 1. String nicht Ergänzen
+    - 2. String rot anzeigen
+    - 3. String nicht ändern
+    - Danach folgt die Fehlerbehandlung, aber erstmal bis dahin
