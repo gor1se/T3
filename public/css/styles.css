@@ -35,16 +35,52 @@ h2 {
     color: #CCC;
 }
 
-#testdiv {
-    position: absolute;
-    bottom: 0;
-    height: 60px;
-    width: 300px;
-    background: greenyellow;
-    text-align: center;
-    font-size: 2rem;
-}
-
 span {
     font-size: 1rem;
+}
+
+.dashboard {
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    width: 30%;
+    height: 100px;
+    background-color: goldenrod;
+}
+
+.dashboard-item {
+    width: 32%;
+    height: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.dashboard-item-hits {
+    background-color: red;
+}
+
+.dashboard-item-time {
+    background-color: gray;
+}
+
+.dashboard-item-fails {
+    background-color: yellow;
+}
+
+#dashboard-item-hits-content {
+    display: inline-block;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+#dashboard-item-time-content {
+    display: inline-block;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+#dashboard-item-fails-content {
+    display: inline-block;
+    margin-top: 2rem;
+    width: 100%;
 }

@@ -6,41 +6,48 @@ let part_1 = document.getElementById("part1-array");
 let part_2 = document.getElementById("part2-array");
 let part_3 = document.getElementById("part3-array");
 
-// let testdiv = document.getElementById("testdiv");
 originalText = originalText.split(' ').join('_');
 originalText.replace(/ /g, "_");
 part_1.innerText = "";
 part_2.innerText = originalText.charAt(0);
 part_3.innerText = originalText.substring(1);
 
-
-
 originalText = "";
 
+let hits = 0;
+let fails = 0;
+let hits_item = document.getElementById("dashboard-item-hits-content");
+let fails_item = document.getElementById("dashboard-item-fails-content");
+
 document.body.addEventListener("keydown", function(evt) {
-    //testdiv.innerText = evt.key;
     // Wenn der eingegebene Buchstabe kein Enter, Space oder shift ist
-    if (evt.keyCode !== 13 && evt.keyCode !== 32 && evt.keyCode !== 16 && evt.keyCode !== 8 && evt.keyCode !== 189) {
-        // Hier auf richtigkeit überprüfen
-        if (evt.key === part_2.innerText) {
-            part_1.innerText += evt.key;
-            part_2.innerText = part_3.innerText.charAt(0);
-            //Hier geschieht der Fehler, entweder CharAt streicht das folgende Leerzeichen oder Substring
-            part_3.innerText = part_3.innerText.substring(1);
-            // Substring funktioniert. Gibt den gesamten String bis auf das erste Zeichen zurück.
+    if (!started) {
+        started = true;
+    } else {
+        if (evt.keyCode !== 13 && evt.keyCode !== 32 && evt.keyCode !== 16 && evt.keyCode !== 8 || (evt.keyCode == 189 && evt.key != "_")) { // Und gleichzeitig ein Unterstrich
+            // Hier auf richtigkeit überprüfen
+            if (evt.key === part_2.innerText) {
+                part_1.innerText += evt.key;
+                part_2.innerText = part_3.innerText.charAt(0);
+                //Hier geschieht der Fehler, entweder CharAt streicht das folgende Leerzeichen oder Substring
+                part_3.innerText = part_3.innerText.substring(1);
+                hits++;
+                hits_item.innerText = hits;
+                // Substring funktioniert. Gibt den gesamten String bis auf das erste Zeichen zurück.
+            } else {
+                fails++;
+                fails_item.innerText = fails;
+            }
+        } else if (evt.keyCode === 32) {
+            if ("_" === part_2.innerText) {
+                part_1.innerText += part_2.innerText;
+                part_2.innerText = part_3.innerText.charAt(0);
+                part_3.innerText = part_3.innerText.substring(1);
+            }
+        } else if (evt.keyCode === 8) {
+            // Hier wird später die Fehlerbehandlung durchgeführt
         }
-    } else if (evt.keyCode === 32) {
-        if ("_" === part_2.innerText) {
-            part_1.innerText += part_2.innerText;
-            part_2.innerText = part_3.innerText.charAt(0);
-            part_3.innerText = part_3.innerText.substring(1);
-        }
-
-
-    } else if (evt.keyCode === 8) {
-        // Hier wird später die Fehlerbehandlung durchgeführt
-    }
-    // testdiv.innerText = w_text;
+    } // testdiv.innerText = w_text;
     // Starte erst sobald space gedrückt wurde
     // if (true) { //evt.keyCode == 32 && started == false
     //     started = true;
