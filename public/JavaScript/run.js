@@ -35,6 +35,8 @@ document.body.addEventListener("keydown", function(evt) {
                 hits_item.innerText = hits;
                 // Substring funktioniert. Gibt den gesamten String bis auf das erste Zeichen zurück.
             } else {
+                hits++;
+                hits_item.innerText = hits;
                 fails++;
                 fails_item.innerText = fails;
             }
