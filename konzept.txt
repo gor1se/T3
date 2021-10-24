@@ -28,3 +28,5 @@ Der Text sollte angepasst werden. Es fehlen noch die Zeilenumbrüche. Idee:
 - Am Ende jeder Zeile soll das Zeilenumbruchzeichen erscheinen
 - Warte auf die Eingabe "Enter"
 - Springe in die nächste Zeile
+- Die aktive Zeile sollte von den anderen Hervogehoben werden
+- Es sollte angezeigt werden, wieviele Abschnitte noch anstehen
