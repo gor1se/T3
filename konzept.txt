@@ -22,3 +22,9 @@ So soll das ganze ablaufen:
     - 2. String rot anzeigen
     - 3. String nicht ändern
     - Danach folgt die Fehlerbehandlung, aber erstmal bis dahin
+
+Der Text sollte angepasst werden. Es fehlen noch die Zeilenumbrüche. Idee:
+- Zeilenumbruch nach X-Worten
+- Am Ende jeder Zeile soll das Zeilenumbruchzeichen erscheinen
+- Warte auf die Eingabe "Enter"
+- Springe in die nächste Zeile
