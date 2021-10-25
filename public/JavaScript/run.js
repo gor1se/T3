@@ -1,6 +1,7 @@
 let originalText = document.getElementById("original-text").innerText;
 document.getElementById("original-text").style.display = "none";
 let started = false;
+let started_timer = false;
 
 let part_1 = document.getElementById("part1-array");
 let part_2 = document.getElementById("part2-array");
@@ -35,11 +36,11 @@ const timer = {
 
 const hundreth = function(timer) {
     timer.hundreth++;
-    if (timer.hundreth >= 100) {
+    if (timer.hundreth >= 99) {
         timer.seconds++;
         timer.hundreth = 0;
     }
-    if (timer.seconds >= 60) {
+    if (timer.seconds >= 59) {
         timer.minutes++;
         timer.seconds = 0;
     }
@@ -61,6 +62,7 @@ const print_timer = function(timer) {
     }
     str += timer.hundreth;
     console.log(str);
+    time_item.innerText = str;
 }
 
 // Main Keydetection
@@ -73,8 +75,15 @@ document.body.addEventListener("keydown", function(evt) {
             // let doc1 = document.getElementsByClassName("dashboard-item-hits");
             // doc1.classList.remove("hidden");
             started = true;
+            started_timer = true;
         }
     } else if (started) {
+        // Check ob letzter Buchstabe eingegeben wurde
+        // Wenn ja, dann started_timer = false
+        // Trigger Endfunktion
+        if (part_3.innerText == "") {
+            started_timer = false;
+        }
         if (evt.keyCode !== 13 && evt.keyCode !== 32 && evt.keyCode !== 16 && evt.keyCode !== 8 || (evt.keyCode == 189 && evt.key != "_")) { // Und gleichzeitig ein Unterstrich
             // Hier auf richtigkeit überprüfen
             if (evt.key === part_2.innerText) {
@@ -152,6 +161,13 @@ document.body.addEventListener("keydown", function(evt) {
     // Warte auf Backspace
     // Warte auf nächsten Input
 });
+
+// Timer, der gestarted wird, sobald die Abschrift gestartet wird
+setInterval(function() {
+    if (started_timer) {
+        hundreth(timer);
+    }
+}, 10);
 
 // Backspace = keyCode 8
 // Space = keyCode 32

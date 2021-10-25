@@ -68,18 +68,21 @@ span {
 }
 
 #dashboard-item-hits-content {
+    font-family: 'Courier New', Courier, monospace;
     display: inline-block;
     margin-top: 2rem;
     width: 100%;
 }
 
 #dashboard-item-time-content {
+    font-family: 'Courier New', Courier, monospace;
     display: inline-block;
     margin-top: 2rem;
     width: 100%;
 }
 
 #dashboard-item-fails-content {
+    font-family: 'Courier New', Courier, monospace;
     display: inline-block;
     margin-top: 2rem;
     width: 100%;
