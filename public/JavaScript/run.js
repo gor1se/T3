@@ -18,12 +18,63 @@ let hits = 0;
 let fails = 0;
 let hits_item = document.getElementById("dashboard-item-hits-content");
 let fails_item = document.getElementById("dashboard-item-fails-content");
+let time = 0;
+let time_item = document.getElementById("dashboard-item-time-content");
+time_item.innerText = "Press space to start!";
+
+// Timer
+// Sobald started aktiviert wird muss die hundreth Methode alle 10 MS aufgerufen werden.
+// Dies sollte in einer externen Funktion gestartet werden. Nicht im Eventlistener
+// Sonst könnte die dauerschleife das Programm schädigen
+
+const timer = {
+    hundreth: 0,
+    seconds: 0,
+    minutes: 0
+}
+
+const hundreth = function(timer) {
+    timer.hundreth++;
+    if (timer.hundreth >= 100) {
+        timer.seconds++;
+        timer.hundreth = 0;
+    }
+    if (timer.seconds >= 60) {
+        timer.minutes++;
+        timer.seconds = 0;
+    }
+    print_timer(timer);
+}
+
+const print_timer = function(timer) {
+    let str = "";
+    if (timer.minutes <= 10) {
+        str += "0"
+    }
+    str += timer.minutes + ":";
+    if (timer.seconds <= 10) {
+        str += "0"
+    }
+    str += timer.seconds + ":";
+    if (timer.hundreth <= 10) {
+        str += "0"
+    }
+    str += timer.hundreth;
+    console.log(str);
+}
+
+// Main Keydetection
 
 document.body.addEventListener("keydown", function(evt) {
     // Wenn der eingegebene Buchstabe kein Enter, Space oder shift ist
     if (!started) {
-        started = true;
-    } else {
+        if (evt.keyCode === 32) {
+            time_item.innerText = 1;
+            // let doc1 = document.getElementsByClassName("dashboard-item-hits");
+            // doc1.classList.remove("hidden");
+            started = true;
+        }
+    } else if (started) {
         if (evt.keyCode !== 13 && evt.keyCode !== 32 && evt.keyCode !== 16 && evt.keyCode !== 8 || (evt.keyCode == 189 && evt.key != "_")) { // Und gleichzeitig ein Unterstrich
             // Hier auf richtigkeit überprüfen
             if (evt.key === part_2.innerText) {
@@ -49,6 +100,7 @@ document.body.addEventListener("keydown", function(evt) {
         } else if (evt.keyCode === 8) {
             // Hier wird später die Fehlerbehandlung durchgeführt
         }
+
     } // testdiv.innerText = w_text;
     // Starte erst sobald space gedrückt wurde
     // if (true) { //evt.keyCode == 32 && started == false

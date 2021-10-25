@@ -84,3 +84,7 @@ span {
     margin-top: 2rem;
     width: 100%;
 }
+
+.hidden {
+    display: none;
+}
