@@ -91,3 +91,8 @@ span {
 .hidden {
     display: none;
 }
+
+.red {
+    color: #f00 !important;
+    /*  Funktioniert, überwiegt aber noch nicht -> Vorerst mit !important gefixed */
+}

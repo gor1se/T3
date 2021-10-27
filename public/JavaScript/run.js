@@ -2,6 +2,7 @@ let originalText = document.getElementById("original-text").innerText;
 document.getElementById("original-text").style.display = "none";
 let started = false;
 let started_timer = false;
+let status_fail = false;
 
 let part_1 = document.getElementById("part1-array");
 let part_2 = document.getElementById("part2-array");
@@ -86,7 +87,7 @@ document.body.addEventListener("keydown", function(evt) {
         }
         if (evt.keyCode !== 13 && evt.keyCode !== 32 && evt.keyCode !== 16 && evt.keyCode !== 8 || (evt.keyCode == 189 && evt.key != "_")) { // Und gleichzeitig ein Unterstrich
             // Hier auf richtigkeit überprüfen
-            if (evt.key === part_2.innerText) {
+            if (evt.key === part_2.innerText && !status_fail) {
                 part_1.innerText += evt.key;
                 part_2.innerText = part_3.innerText.charAt(0);
                 //Hier geschieht der Fehler, entweder CharAt streicht das folgende Leerzeichen oder Substring
@@ -99,6 +100,9 @@ document.body.addEventListener("keydown", function(evt) {
                 hits_item.innerText = hits;
                 fails++;
                 fails_item.innerText = fails;
+                // part 2 rot einfärben
+                part_2.classList.add("red");
+                status_fail = true;
             }
         } else if (evt.keyCode === 32) {
             if ("_" === part_2.innerText) {
@@ -106,8 +110,11 @@ document.body.addEventListener("keydown", function(evt) {
                 part_2.innerText = part_3.innerText.charAt(0);
                 part_3.innerText = part_3.innerText.substring(1);
             }
-        } else if (evt.keyCode === 8) {
+        } else if (evt.keyCode === 8 && status_fail) {
             // Hier wird später die Fehlerbehandlung durchgeführt
+            // Part 2 rote färbung wieder entfernen
+            part_2.classList.remove("red");
+            status_fail = false;
         }
 
     } // testdiv.innerText = w_text;
